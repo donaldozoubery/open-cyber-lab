@@ -185,6 +185,10 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 If you discover a security vulnerability, please report it responsibly.
 
+## Contact
+For questions or feedback, please open an issue on GitHub.
+
+## ⭐ Star the repo if you like the project
 ---
 
 <p align="center">
