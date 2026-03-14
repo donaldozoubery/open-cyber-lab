@@ -20,9 +20,7 @@ OBJECTIVES = [
 ]
 
 import secrets
-import hashlib
 import time
-from typing import Optional
 
 
 # Simulated OAuth configuration

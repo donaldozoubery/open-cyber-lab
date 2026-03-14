@@ -1,8 +1,6 @@
 """Tests for progress module."""
 
-import pytest
 import sys
-import json
 import tempfile
 from pathlib import Path
 from unittest.mock import patch, MagicMock

@@ -20,8 +20,6 @@ OBJECTIVES = [
 ]
 
 import secrets
-import hashlib
-import time
 
 
 # Simulated user session

@@ -22,7 +22,6 @@ OBJECTIVES = [
 import pickle
 import base64
 import os
-from typing import Optional
 
 
 class MaliciousPayload:

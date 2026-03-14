@@ -19,7 +19,6 @@ OBJECTIVES = [
     "Practice secure resource handling"
 ]
 
-from typing import Optional
 
 
 # Simulated user database
@@ -181,7 +180,7 @@ def run(*args):
                 print(f"\n✓ Accessed user: {result['name']}")
                 print(f"  Role: {result['role']}")
                 print(f"  Private data: {result['private_data']}")
-                print(f"\n⚠️  VULNERABLE: You accessed another user's data!")
+                print("\n⚠️  VULNERABLE: You accessed another user's data!")
             else:
                 print(f"\n✗ {result['error']}")
                 

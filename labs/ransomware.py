@@ -19,11 +19,8 @@ OBJECTIVES = [
     "Practice protection and recovery strategies"
 ]
 
-import os
 import hashlib
 import base64
-from typing import Optional
-from pathlib import Path
 
 
 # Simulated encrypted files

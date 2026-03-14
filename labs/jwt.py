@@ -23,7 +23,6 @@ import base64
 import json
 import hashlib
 import hmac
-from typing import Optional
 
 
 # Secret key for signing
@@ -243,7 +242,7 @@ def run(*args):
         result = verify_jwt(token)
         
         if result["valid"]:
-            print(f"\n✓ Token valid!")
+            print("\n✓ Token valid!")
             print(f"  Payload: {result['payload']}")
         else:
             print(f"\n✗ {result['error']}")

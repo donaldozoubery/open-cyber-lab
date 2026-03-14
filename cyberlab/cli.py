@@ -2,7 +2,6 @@
 
 import sys
 import argparse
-from typing import Optional
 
 try:
     from colorama import init, Fore, Style
@@ -142,7 +141,7 @@ def cmd_run(args: Args) -> int:
         
     except LabNotFoundError as e:
         print_error(str(e))
-        print_info(f"Run 'python cyberlab.py list' to see available labs.")
+        print_info("Run 'python cyberlab.py list' to see available labs.")
         return EXIT_LAB_NOT_FOUND
         
     except LabLoadError as e:
@@ -321,7 +320,7 @@ For more information, visit: https://github.com/jaotiana/open-cyber-lab
     subparsers = parser.add_subparsers(dest="command", help="Available commands")
     
     # List command
-    list_parser = subparsers.add_parser(
+    subparsers.add_parser(
         "list",
         help="List all available labs",
         description="Display a list of all available cybersecurity labs."
@@ -355,14 +354,14 @@ For more information, visit: https://github.com/jaotiana/open-cyber-lab
     )
     
     # Progress command
-    progress_parser = subparsers.add_parser(
+    subparsers.add_parser(
         "progress",
         help="Show your progress",
         description="Display your learning progress and statistics."
     )
     
     # Reset command
-    reset_parser = subparsers.add_parser(
+    subparsers.add_parser(
         "reset",
         help="Reset your progress",
         description="Reset all progress data."

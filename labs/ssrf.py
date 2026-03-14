@@ -19,8 +19,6 @@ OBJECTIVES = [
     "Practice secure URL validation"
 ]
 
-import socket
-from typing import Optional
 
 
 # Simulated internal services

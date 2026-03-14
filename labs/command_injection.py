@@ -19,8 +19,6 @@ OBJECTIVES = [
     "Practice secure input handling"
 ]
 
-import subprocess
-from typing import Optional
 
 
 # Simulated system commands

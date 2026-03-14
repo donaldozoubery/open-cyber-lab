@@ -19,9 +19,7 @@ OBJECTIVES = [
     "Practice secure file handling"
 ]
 
-import os
 from pathlib import Path
-from typing import Optional
 
 
 # Simulated file system

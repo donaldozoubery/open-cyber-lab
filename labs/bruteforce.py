@@ -21,7 +21,6 @@ OBJECTIVES = [
 
 import time
 import hashlib
-from typing import Optional
 
 
 # Simulated user database

@@ -1,10 +1,7 @@
 """Tests for lab modules."""
 
-import pytest
 import sys
 from pathlib import Path
-from io import StringIO
-from unittest.mock import patch
 
 # Add parent directory to path for imports
 sys.path.insert(0, str(Path(__file__).parent.parent))

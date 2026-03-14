@@ -3,7 +3,6 @@
 import os
 import importlib
 from pathlib import Path
-from typing import Optional
 
 # Configuration - can be overridden by environment variable
 LAB_FOLDER: str = os.environ.get("CYBERLAB_LABS_DIR", "labs")

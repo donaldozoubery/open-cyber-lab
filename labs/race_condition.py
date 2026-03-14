@@ -21,7 +21,6 @@ OBJECTIVES = [
 
 import time
 import threading
-from typing import Optional
 
 
 # Simulated bank account

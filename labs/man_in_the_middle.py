@@ -20,9 +20,7 @@ OBJECTIVES = [
 ]
 
 import hashlib
-import base64
 import time
-from typing import Optional
 
 
 # Simulated network entities

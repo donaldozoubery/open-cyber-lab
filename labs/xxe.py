@@ -19,9 +19,6 @@ OBJECTIVES = [
     "Practice secure XML parsing"
 ]
 
-import os
-from pathlib import Path
-from typing import Optional
 
 
 # Simulated sensitive files

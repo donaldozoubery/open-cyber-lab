@@ -19,8 +19,6 @@ OBJECTIVES = [
     "Practice secure data handling"
 ]
 
-import os
-from typing import Optional
 
 
 # Simulated responses

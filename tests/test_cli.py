@@ -1,6 +1,5 @@
 """Tests for CLI module."""
 
-import pytest
 import sys
 from io import StringIO
 from pathlib import Path
