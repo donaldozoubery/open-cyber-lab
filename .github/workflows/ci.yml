@@ -12,6 +12,8 @@ jobs:
     
     steps:
     - uses: actions/checkout@v4
+      with:
+        node-version: '20'
     
     - name: Set up Python
       uses: actions/setup-python@v5
@@ -25,13 +27,15 @@ jobs:
     
     - name: Run tests (core only)
       run: |
-        pytest tests/test_lab_loader.py -v -k "not sql_injection"
+        python -m pytest tests/test_lab_loader.py -v -k "not sql_injection" --ignore=tests/test_progress.py
 
   lint:
     runs-on: ubuntu-latest
     
     steps:
     - uses: actions/checkout@v4
+      with:
+        node-version: '20'
     
     - name: Set up Python
       uses: actions/setup-python@v5
@@ -51,6 +55,8 @@ jobs:
     
     steps:
     - uses: actions/checkout@v4
+      with:
+        node-version: '20'
     
     - name: Set up Python
       uses: actions/setup-python@v5

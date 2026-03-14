@@ -29,9 +29,6 @@ USERS = {
     "admin": {"id": 3, "name": "Admin", "role": "admin", "private_data": "Admin panel access key: ADMIN_KEY_12345"},
 }
 
-# Current session - must be declared global before use
-CURRENT_USER = {"id": 1, "username": "user1", "role": "user"}
-
 # Current session
 CURRENT_USER = {"id": 1, "username": "user1", "role": "user"}
 
@@ -131,6 +128,8 @@ def check_authorization(user_id: int, current_user_id: int, current_role: str) -
 
 def run(*args):
     """Run the IDOR Lab."""
+    global CURRENT_USER
+    
     print("=" * 50)
     print("     INSECURE DIRECT OBJECT REFERENCE LAB")
     print("=" * 50)
@@ -214,8 +213,6 @@ def run(*args):
             
     elif choice == "3":
         print("\n--- Test as Admin ---")
-        
-        global CURRENT_USER
         
         CURRENT_USER = {"id": 3, "username": "admin", "role": "admin"}
         
