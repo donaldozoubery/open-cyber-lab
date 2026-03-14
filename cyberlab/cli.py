@@ -2,7 +2,7 @@
 
 import sys
 import argparse
-from typing import NoReturn
+from typing import Optional
 
 try:
     from colorama import init, Fore, Style
@@ -28,6 +28,7 @@ from cyberlab.lab_loader import (
     LabLoadError,
     LabValidationError,
 )
+from cyberlab.progress import ProgressTracker
 
 
 # Exit codes
@@ -131,6 +132,12 @@ def cmd_run(args: Args) -> int:
         print()
         print_success("Lab completed!")
         
+        # Track progress
+        tracker = ProgressTracker()
+        if not tracker.is_completed(lab_name):
+            tracker.complete_lab(lab_name)
+            print_info(f"Progress saved: '{lab_name}' marked as completed!")
+        
         return EXIT_SUCCESS
         
     except LabNotFoundError as e:
@@ -184,11 +191,102 @@ def cmd_info(args: Args) -> int:
             for obj in info['objectives']:
                 print(f"  {Fore.CYAN}•{Style.RESET_ALL} {obj}")
         
+        # Show completion status
+        tracker = ProgressTracker()
+        if tracker.is_completed(lab_name):
+            print()
+            print(f"{Fore.GREEN}✓ Completed{Style.RESET_ALL}")
+        
         return EXIT_SUCCESS
         
     except LabNotFoundError as e:
         print_error(str(e))
         return EXIT_LAB_NOT_FOUND
+        
+    except Exception as e:
+        print_error(str(e))
+        return EXIT_GENERAL_ERROR
+
+
+def cmd_progress(args: Args) -> int:
+    """Show user progress.
+    
+    Args:
+        args: Parsed command-line arguments
+        
+    Returns:
+        int: Exit code
+    """
+    try:
+        tracker = ProgressTracker()
+        stats = tracker.get_statistics()
+        completed = tracker.get_completed_labs()
+        all_labs = list_labs()
+        
+        print_header("Your Progress")
+        print()
+        
+        # Progress bar
+        total = len(all_labs)
+        done = len(completed)
+        percentage = int((done / total) * 100) if total > 0 else 0
+        
+        bar_length = 30
+        filled = int((done / total) * bar_length) if total > 0 else 0
+        bar = f"{Fore.GREEN}{'█' * filled}{Fore.RED}{'░' * (bar_length - filled)}{Style.RESET_ALL}"
+        
+        print(f"Progress: [{bar}] {percentage}%")
+        print()
+        
+        print(f"Completed: {done}/{total} labs")
+        print(f"Total attempts: {stats['total_attempts']}")
+        
+        if stats['total_time_spent'] > 0:
+            minutes = stats['total_time_spent'] // 60
+            print(f"Time spent: {minutes} minutes")
+        
+        if completed:
+            print()
+            print("Completed labs:")
+            for lab in completed:
+                print(f"  {Fore.GREEN}✓{Style.RESET_ALL} {lab}")
+        
+        # Show remaining labs
+        remaining = [lab for lab in all_labs if lab not in completed]
+        if remaining:
+            print()
+            print("Remaining labs:")
+            for lab in remaining:
+                print(f"  {Fore.CYAN}○{Style.RESET_ALL} {lab}")
+        
+        return EXIT_SUCCESS
+        
+    except Exception as e:
+        print_error(str(e))
+        return EXIT_GENERAL_ERROR
+
+
+def cmd_reset(args: Args) -> int:
+    """Reset user progress.
+    
+    Args:
+        args: Parsed command-line arguments
+        
+    Returns:
+        int: Exit code
+    """
+    try:
+        tracker = ProgressTracker()
+        
+        print_warning = input("Are you sure you want to reset all progress? (yes/no): ")
+        
+        if print_warning.lower() == "yes":
+            tracker.reset_progress()
+            print_success("Progress reset successfully!")
+        else:
+            print_info("Reset cancelled.")
+        
+        return EXIT_SUCCESS
         
     except Exception as e:
         print_error(str(e))
@@ -206,6 +304,8 @@ Examples:
   cyberlab list                  List all available labs
   cyberlab run sql_injection     Run the SQL injection lab
   cyberlab info sql_injection    Show info about the SQL injection lab
+  cyberlab progress              Show your progress
+  cyberlab reset                 Reset all progress
   cyberlab --version             Show version information
 
 For more information, visit: https://github.com/jaotiana/open-cyber-lab
@@ -256,6 +356,20 @@ For more information, visit: https://github.com/jaotiana/open-cyber-lab
         help="Name of the lab to show info about"
     )
     
+    # Progress command
+    progress_parser = subparsers.add_parser(
+        "progress",
+        help="Show your progress",
+        description="Display your learning progress and statistics."
+    )
+    
+    # Reset command
+    reset_parser = subparsers.add_parser(
+        "reset",
+        help="Reset your progress",
+        description="Reset all progress data."
+    )
+    
     return parser
 
 
@@ -280,6 +394,10 @@ def main() -> int:
         return cmd_run(args)
     elif args.command == "info":
         return cmd_info(args)
+    elif args.command == "progress":
+        return cmd_progress(args)
+    elif args.command == "reset":
+        return cmd_reset(args)
     else:
         print_error(f"Unknown command: {args.command}")
         return EXIT_GENERAL_ERROR
