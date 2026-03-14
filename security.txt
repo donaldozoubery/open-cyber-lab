@@ -1,0 +1,53 @@
+# Security Policy
+
+## Supported Versions
+
+We actively support and provide security updates for the following versions:
+
+| Version | Supported          |
+| ------- | ------------------ |
+| 1.0.x   | :white_check_mark: |
+| 0.x.x   | :x:                |
+
+## Reporting a Vulnerability
+
+If you discover a security vulnerability, please report it responsibly.
+
+### How to Report
+
+1. **Do NOT** create a public GitHub issue for security vulnerabilities
+2. Email the maintainer directly at: jaotiana@example.com
+3. Include in your report:
+   - Description of the vulnerability
+   - Steps to reproduce
+   - Potential impact
+   - Any suggested fixes (optional)
+
+### Response Timeline
+
+- We aim to acknowledge reports within 48 hours
+- We will provide regular updates on our progress
+- We aim to release a fix within 30 days
+
+## Scope
+
+This security policy applies to:
+- The main repository: https://github.com/donaldozoubery/open-cyber-lab
+- All official releases on PyPI
+
+## Out of Scope
+
+- Social engineering attacks
+- Physical security
+- Denial of service attacks on public infrastructure
+
+## Security Best Practices
+
+When using this project:
+- Only use in educational/authorized environments
+- Follow responsible disclosure guidelines
+- Keep dependencies updated
+
+## Acknowledgments
+
+We appreciate the security community's efforts to make open-source software safer. Contributors will be acknowledged (with permission) in the security advisories.
