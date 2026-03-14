@@ -14,6 +14,8 @@ from cyberlab.cli import (
     cmd_list,
     cmd_run,
     cmd_info,
+    cmd_progress,
+    cmd_reset,
     print_error,
     print_success,
     print_info,
@@ -235,3 +237,51 @@ class TestMain:
         result = main()
         
         assert result == EXIT_GENERAL_ERROR
+
+
+class TestCmdProgress:
+    """Tests for cmd_progress function."""
+
+    @patch('cyberlab.cli.ProgressTracker')
+    def test_cmd_progress_success(self, mock_tracker):
+        """Test successful progress command."""
+        mock_instance = MagicMock()
+        mock_instance.get_statistics.return_value = {
+            'total_completed': 2,
+            'total_attempts': 5,
+            'total_time_spent': 300
+        }
+        mock_instance.get_completed_labs.return_value = ['sql_injection', 'xss']
+        mock_tracker.return_value = mock_instance
+        
+        result = cmd_progress(MagicMock())
+        
+        assert result == EXIT_SUCCESS
+
+
+class TestCmdReset:
+    """Tests for cmd_reset function."""
+
+    @patch('cyberlab.cli.input', return_value='yes')
+    @patch('cyberlab.cli.ProgressTracker')
+    def test_cmd_reset_confirm(self, mock_tracker, mock_input):
+        """Test reset with confirmation."""
+        mock_instance = MagicMock()
+        mock_tracker.return_value = mock_instance
+        
+        result = cmd_reset(MagicMock())
+        
+        assert result == EXIT_SUCCESS
+        mock_instance.reset_progress.assert_called_once()
+
+    @patch('cyberlab.cli.input', return_value='no')
+    @patch('cyberlab.cli.ProgressTracker')
+    def test_cmd_reset_cancel(self, mock_tracker, mock_input):
+        """Test reset cancelled."""
+        mock_instance = MagicMock()
+        mock_tracker.return_value = mock_instance
+        
+        result = cmd_reset(MagicMock())
+        
+        assert result == EXIT_SUCCESS
+        mock_instance.reset_progress.assert_not_called()
