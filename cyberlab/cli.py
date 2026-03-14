@@ -331,8 +331,7 @@ For more information, visit: https://github.com/jaotiana/open-cyber-lab
     run_parser = subparsers.add_parser(
         "run",
         help="Run a specific lab",
-        description="Execute a cybersecurity lab by name.",
-        metavar="LAB_NAME"
+        description="Execute a cybersecurity lab by name."
     )
     run_parser.add_argument(
         "lab_name",
@@ -348,8 +347,7 @@ For more information, visit: https://github.com/jaotiana/open-cyber-lab
     info_parser = subparsers.add_parser(
         "info",
         help="Show information about a lab",
-        description="Display detailed information about a specific lab.",
-        metavar="LAB_NAME"
+        description="Display detailed information about a specific lab."
     )
     info_parser.add_argument(
         "lab_name",
