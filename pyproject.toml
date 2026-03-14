@@ -9,7 +9,7 @@ description = "Open-source project for learning cybersecurity through interactiv
 readme = "README.md"
 license = {text = "MIT"}
 authors = [
-    {name = "Jaotiana Donaldo ZOUBERY", email = "jaotiana@example.com"}
+    {name = "Jaotiana Donaldo ZOUBERY", email = "dzoubery@gmail.com"}
 ]
 keywords = ["cybersecurity", "education", "labs", "security-training"]
 classifiers = [
