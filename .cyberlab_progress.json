@@ -1,0 +1,22 @@
+{
+  "version": "1.0.0",
+  "created_at": "2026-03-14T22:03:36.005544",
+  "last_updated": "2026-03-14T22:03:36.009541",
+  "completed_labs": {
+    "sql_injection": {
+      "completed_at": "2026-03-14T22:03:36.005544",
+      "attempts": 1,
+      "time_spent": 0
+    },
+    "password_cracking": {
+      "completed_at": "2026-03-14T22:03:36.009541",
+      "attempts": 1,
+      "time_spent": 0
+    }
+  },
+  "total_attempts": 2,
+  "statistics": {
+    "total_time_spent": 0,
+    "favorite_lab": null
+  }
+}

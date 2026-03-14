@@ -29,6 +29,9 @@ USERS = {
     "admin": {"id": 3, "name": "Admin", "role": "admin", "private_data": "Admin panel access key: ADMIN_KEY_12345"},
 }
 
+# Current session - must be declared global before use
+CURRENT_USER = {"id": 1, "username": "user1", "role": "user"}
+
 # Current session
 CURRENT_USER = {"id": 1, "username": "user1", "role": "user"}
 
@@ -213,6 +216,7 @@ def run(*args):
         print("\n--- Test as Admin ---")
         
         global CURRENT_USER
+        
         CURRENT_USER = {"id": 3, "username": "admin", "role": "admin"}
         
         print(f"Current user: {CURRENT_USER['username']} (ID: {CURRENT_USER['id']}, Role: {CURRENT_USER['role']})")
