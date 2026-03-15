@@ -4,6 +4,8 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Version](https://img.shields.io/badge/version-1.0.0-orange)](pyproject.toml)
 
+![Open Cyber Lab](Open_cyber_lab.png)
+
 Open Cyber Lab is an open-source Python project for learning cybersecurity through interactive labs.
 
 > **⚠️ Disclaimer**: This project is for educational purposes only. Always obtain proper authorization before testing or using cybersecurity techniques.
