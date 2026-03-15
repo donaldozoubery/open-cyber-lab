@@ -6,7 +6,8 @@ Thank you for your interest in contributing!
 
 1. Fork the repository
 2. Clone your fork: `git clone https://github.com/YOUR_USERNAME/open-cyber-lab.git`
-3. Create a branch: `git checkout -b feature/your-feature`
+3. Add upstream: `git remote add upstream https://github.com/donaldozoubery/open-cyber-lab.git`
+4. Create a branch from `dev`: `git checkout -b dev` then `git checkout -b feature/your-feature`
 
 ## Development Setup
 
@@ -70,11 +71,20 @@ def run(*args):
 
 ## Pull Request Process
 
-1. Update documentation if needed
-2. Add tests for new features
-3. Ensure all tests pass
-4. Update CHANGELOG.md
-5. Submit a pull request
+1. Make sure you're on `dev` branch: `git checkout dev`
+2. Create your feature branch: `git checkout -b feature/your-feature`
+3. Make your changes and commit
+4. Push to your fork
+5. Open a pull request to `dev` branch (NOT to `main`)
+6. Ensure all CI checks pass
+7. Wait for review
+8. After merge to `dev`, the maintainer will merge to `main` for release
+
+## Important Notes
+
+- **Do NOT** merge directly to `main`
+- All contributions go through `dev` branch
+- Use **Squash merge** or **Rebase merge** when merging PRs
 
 ## Reporting Issues
 
