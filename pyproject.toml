@@ -52,9 +52,11 @@ python_files = ["test_*.py"]
 python_classes = ["Test*"]
 python_functions = ["test_*"]
 
-[tool.ruff.lint]
+[tool.ruff]
 line-length = 100
 target-version = "py38"
+
+[tool.ruff.lint]
 ignore = ["E402"]
 
 [tool.black]
